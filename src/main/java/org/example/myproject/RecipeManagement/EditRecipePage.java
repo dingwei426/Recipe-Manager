@@ -93,6 +93,7 @@ public class EditRecipePage extends RecipePage implements ActionListener {
 
                     ImageIcon imageIcon = new ImageIcon(image);
                     imageLabel.setIcon(imageIcon);
+                    imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
                     // Store the selected image file in imageStream
                     imageStream = selectedFile;
