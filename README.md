@@ -5,6 +5,7 @@ A recipe management system to keep track the recipes for personal or commercial 
 - Difficult to manage recipe in a busy restaurant
 - Difficult to remember all the recipes of the restaurant
 
+
 ## :books: Functional Requirement
 1.	Create a new recipe.
 2.	Search existing recipes.
@@ -14,6 +15,20 @@ A recipe management system to keep track the recipes for personal or commercial 
 6.	Allow admin to create an account.
 7.	Allow the admin to log in to the admin account.
 8.	Allow the admin to log out to the admin account.
+
+## :gear: Installation
+1. Clone the project
+2. Create a database for this project using create-db.sql
+3. Change the mysql database information (you may need to create a new user and connection, 'RecipeManager' in dbUrl is the connection name) ![DBInfo](https://github.com/dingwei426/Recipe-Manager/blob/main/screenshot/DbInfo.png)
+4. Change the directory for recipeImageCache
+   - change the path according to location of the recipeImageCache folder (you can find in src/main/java directory) ![RecipeDAO](https://github.com/dingwei426/Recipe-Manager/blob/main/screenshot/RecipeDAO.png) ![TopLevelMenu](https://github.com/dingwei426/Recipe-Manager/blob/main/screenshot/TopLevelMenu.png)
+5. Run maven in command line (or you may use any IDE to run this project)
+   - ```mvn compile```
+   - ```mvn test```
+   - ```mvn install```
+   - ```java -jar target/Recipe-Manager-1.0-SNAPSHOT.jar```
+   
+
 
 ## :framed_picture: Screenshot
 ### :memo: Signup
