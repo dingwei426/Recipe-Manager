@@ -17,12 +17,9 @@ import java.util.LinkedList;
 
 public class RecipeDAO {
     public static boolean insertRecipe(User user, Recipe recipe) {
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
             String getUserIDSql = "SELECT user_id FROM user WHERE username = ?";
             PreparedStatement preparedUserIDStatement = connection.prepareCall(getUserIDSql);
@@ -68,13 +65,10 @@ public class RecipeDAO {
     }
 
     public static void insertIngredient(Recipe recipe, Ingredient[] ingredients) {
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         for (Ingredient ingredient : ingredients) {
             try {
-                Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+                Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
                 String getUserIDSql = "SELECT recipe_id FROM recipe WHERE name = ?";
                 PreparedStatement preparedUserIDStatement = connection.prepareCall(getUserIDSql);
@@ -102,12 +96,8 @@ public class RecipeDAO {
     public static LinkedList<Recipe> getRecipeList(User user) {
         LinkedList<Recipe> recipeLinkedList = new LinkedList<>();
 
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
-
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
             String getUserIDSql = "SELECT user_id FROM user WHERE username = ?";
             PreparedStatement preparedUserIDStatement = connection.prepareCall(getUserIDSql);
@@ -157,7 +147,9 @@ public class RecipeDAO {
                 if (blobBytes != null) {
                     // Generate a unique filename using a timestamp
                     String timestamp = String.valueOf(System.currentTimeMillis());
-                        file = new File("src/main/java/recipeImageCache/" + "output_" + timestamp + ".jpg");
+                    String path = "your 'recipeImageCache' path (you can find in src/main/java directory";
+                    // Example: "C:\\Users\\dingw\\OneDrive\\Desktop\\Recipe-Manager\\src\\main\\java\\recipeImageCache\\"
+                    file = new File(path + "output_" + timestamp + ".jpg");
                     try (FileOutputStream fos = new FileOutputStream(file)) {
                         fos.write(blobBytes);
                     } catch (IOException e) {
@@ -182,12 +174,9 @@ public class RecipeDAO {
     }
 
     public static int getRecipeID(User user, Recipe recipe){
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
             String getUserIDSql = "SELECT user_id FROM user WHERE username = ?";
             PreparedStatement preparedUserIDStatement = connection.prepareCall(getUserIDSql);
@@ -214,12 +203,9 @@ public class RecipeDAO {
     }
 
     public static void deleleRecipe(int recipe_id){
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
             String storedDeleteRecipeProcedure = "{call DeleteRecipe(?)}";
             PreparedStatement preparedStatement = connection.prepareCall(storedDeleteRecipeProcedure);
@@ -231,12 +217,9 @@ public class RecipeDAO {
     }
 
     public static boolean editRecipe(int recipe_id, Recipe newRecipe) {
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
             String editRecipeSql = "UPDATE recipe " +
                     "SET name = ?, steps = ?, equipments = ?, time_taken = ?, category = ?, yield = ?, tips = ?, image = ? " +
@@ -261,12 +244,9 @@ public class RecipeDAO {
     }
 
     public static void editIngredients(int recipe_id, Recipe newRecipe){
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
             String storedDeleteIngredientsProcedure = "{call DeleteIngredients(?)}";
             PreparedStatement preparedDeleteIngredientsStatement = connection.prepareCall(storedDeleteIngredientsProcedure);

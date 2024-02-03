@@ -10,12 +10,9 @@ import java.sql.ResultSet;
 
 public class NutritionFactDAO {
     public static void insertNutritionFact(Recipe recipe, NutritionFact nutritionFact){
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
             String getUserIDSql = "SELECT recipe_id FROM recipe WHERE name = ?";
             PreparedStatement preparedUserIDStatement = connection.prepareCall(getUserIDSql);
@@ -41,12 +38,9 @@ public class NutritionFactDAO {
     }
 
     public static boolean editNutritionFact(int recipe_id, Recipe newRecipe){
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
             String editNutritionFactSql = "UPDATE nutrition_fact SET calories = ?, fat = ?, carbs = ?, protein = ? " +
                     "WHERE fk_nutrition_fact_recipe = ?";

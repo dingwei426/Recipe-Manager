@@ -6,12 +6,9 @@ import java.sql.*;
 
 public class UserDAO {
     public static boolean login(User user) {
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
             String query = "SELECT * FROM user WHERE username = ? AND password = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user.getUsername());
@@ -25,12 +22,9 @@ public class UserDAO {
     }
 
     public static boolean signup(User user) {
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
 
             //check whether username is used
             String getUsernameSql = "SELECT username FROM user WHERE username = ?";
@@ -56,12 +50,9 @@ public class UserDAO {
     }
 
     public static String changePassword(User user) {
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
             String storedProcedureCall = "{call ChangeUserPassword(?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(storedProcedureCall);
             callableStatement.setString(1, user.getUsername());
@@ -76,12 +67,9 @@ public class UserDAO {
     }
 
     public static int getUserID(User user) {
-        String dbUrl = "jdbc:mysql://localhost:3306/demo";
-        String dbUser = "recipemanager";
-        String dbPass = "manager1234";
 
         try {
-            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            Connection connection = DriverManager.getConnection(DbInfo.dbUrl, DbInfo.dbUser, DbInfo.dbPass);
             String storedProcedureCall = "{call getUserID(?)}";
             CallableStatement callableStatement = connection.prepareCall(storedProcedureCall);
             callableStatement.setString(1, user.getUsername());

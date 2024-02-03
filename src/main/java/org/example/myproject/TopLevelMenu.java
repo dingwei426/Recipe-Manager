@@ -109,7 +109,9 @@ public class TopLevelMenu extends JFrame implements ActionListener {
             new UserMenu(user);
         } else if (e.getSource() == logoutButton) {
             JOptionPane.showMessageDialog(this.TopLevelMenuPanel, "Logout Successfully.");
-            clearDirectory(new File("src/main/java/recipeImageCache/"));
+            String path = "your 'recipeImageCache' path (you can find in src/main/java directory)";
+            // Example: "C:\\Users\\dingw\\OneDrive\\Desktop\\Recipe-Manager\\src\\main\\java\\recipeImageCache\\"
+            clearDirectory(new File(path));
             System.exit(0);
         } else if (e.getSource() == createRecipeButton) {
             new CreateRecipe(user);
