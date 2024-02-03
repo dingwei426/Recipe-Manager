@@ -19,7 +19,7 @@ A recipe management system to keep track the recipes for personal or commercial 
 ## :gear: Installation
 1. Clone the project
 2. Create a database for this project using create-db.sql
-3. Change the mysql database information (you may need to create a new user and connection, 'RecipeManager' in dbUrl is the connection name) ![DBInfo](https://github.com/dingwei426/Recipe-Manager/blob/main/screenshot/DbInfo.png)
+3. Change the mysql database information (you may need to create a new user, 'RecipeManager' in dbUrl is the schema name) ![DBInfo](https://github.com/dingwei426/Recipe-Manager/blob/main/screenshot/DbInfo.png)
 4. Change the directory for recipeImageCache
    - change the path according to location of the recipeImageCache folder (you can find in src/main/java directory) ![RecipeDAO](https://github.com/dingwei426/Recipe-Manager/blob/main/screenshot/RecipeDAO.png) ![TopLevelMenu](https://github.com/dingwei426/Recipe-Manager/blob/main/screenshot/TopLevelMenu.png)
 5. Run maven in command line (or you may use any IDE to run this project)
