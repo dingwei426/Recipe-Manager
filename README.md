@@ -23,16 +23,16 @@ A recipe management system to keep track the recipes for personal or commercial 
 4. Change the directory for recipeImageCache
    - change the path according to location of the recipeImageCache folder (you can find in src/main/java directory) ![RecipeDAO](https://github.com/dingwei426/Recipe-Manager/blob/main/screenshot/RecipeDAO.png) ![TopLevelMenu](https://github.com/dingwei426/Recipe-Manager/blob/main/screenshot/TopLevelMenu.png)
 5. Run maven in command line (or you may use any IDE to run this project)
-   - ```
+    ```
      mvn compile
      ```
-   - ```
+    ```
      mvn test
      ```
-   - ```
+    ```
      mvn install
      ```
-   - ```
+    ```
      java -jar target/Recipe-Manager-1.0-SNAPSHOT.jar
      ```
    
